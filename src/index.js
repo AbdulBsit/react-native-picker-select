@@ -169,14 +169,14 @@ export default class RNPickerSelect extends PureComponent {
 
     onUpArrow() {
         const { onUpArrow } = this.props;
-
-        this.togglePicker(false, onUpArrow);
+        onUpArrow && onUpArrow()
+        // this.togglePicker(false, onUpArrow);
     }
 
     onDownArrow() {
         const { onDownArrow } = this.props;
-
-        this.togglePicker(false, onDownArrow);
+        onDownArrow && onDownArrow
+        // this.togglePicker(false, onDownArrow);
     }
 
     onValueChange(value, index) {
@@ -331,7 +331,8 @@ export default class RNPickerSelect extends PureComponent {
                 <TouchableOpacity
                     testID="done_button"
                     onPress={() => {
-                        this.togglePicker(true, onDonePress);
+                        onDonePress && onDonePress()
+                        this.togglePicker(true);
                     }}
                     onPressIn={() => {
                         this.setState({ doneDepressed: true });
